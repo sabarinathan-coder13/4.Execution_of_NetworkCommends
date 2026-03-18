@@ -25,9 +25,10 @@ This commands includes
 <BR>
 • Other IP Commands e.g. show ip route etc.
 <BR>
-## PROGRAM
+## Program
 server.py
-'''
+
+```
 import socket
 from pythonping import ping
 
@@ -50,8 +51,27 @@ while True:
         c.send(f"Ping failed: {e}".encode('utf-8'))
 
 c.close()
-'''
+```
+client.py
+```
+import socket
+
+s = socket.socket()
+s.connect(('localhost', 8000))
+
+while True:
+    ip = input("Enter the website you want to ping (or type 'exit' to quit): ")
+    s.send(ip.encode('utf-8'))
+    if ip.lower() == 'exit':
+        break
+    print(s.recv(4096).decode('utf-8'))
+
+s.close()
+```
+
 ## Output
+
+<img width="1108" height="312" alt="image" src="https://github.com/user-attachments/assets/0b8649de-ec88-45e8-9820-e3c72e7776f0" />
 
 ## Result
 Thus Execution of Network commands Performed 
